@@ -153,23 +153,33 @@ int main(int ac, char **av) {
 		// update the event handler
 		ih.refresh();
 		// exit when any key is down
-		if (ih.isKeyDown(SDLK_d))
+		if (ih.isKeyDown(SDLK_d)
+			// || SDL_GameControllerGetButton(*gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)
+			)
 		{
 			speed = 40;
 			moveing = true;
 
 		}
-		if (ih.isKeyDown(SDLK_a))
+		if (ih.isKeyDown(SDLK_a)
+			// || SDL_GameControllerGetButton(*gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT)
+			)
 		{
 			speed = -40;
 			moveing = true;
 		}
-		if (ih.isKeyUp(SDLK_a) && ih.isKeyUp(SDLK_d))
+		if (ih.isKeyUp(SDLK_a) && ih.isKeyUp(SDLK_d)
+			// || SDL_GameControllerGetButton(*gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT) &&
+			// SDL_GameControllerGetButton(*gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT)
+			)
 		{
 			// para que no haya movimiento infinito (experimental)
 			moveing = false;
 		}
-		if (ih.isKeyDown(SDLK_w)&& eJumps>0)
+		if (ih.isKeyDown(SDLK_w) && eJumps > 0
+			// || SDL_GameControllerGetButton(*gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_UP)
+			// && eJumps > 0
+			)
 		{
 			if (!onGround)
 			{
